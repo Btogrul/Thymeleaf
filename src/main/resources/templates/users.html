@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>all users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container text-center">
+    <form  th:action="@{/logout}" method="post">
+        <p>
+            Welcome <b th:text="${#request.userPrincipal.principal.fullName}"></b>
+        </p>
+        <input type="submit" value="Sign Out"/>
+
+    </form>
+    <h1>Hey there users</h1>
+
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>
+                    User ID
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last name
+                </th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr th:each="user: ${listUsers}">
+                <td th:text="${user.id}">User ID
+                </td>
+                <td th:text="${user.email}">Email
+                </td>
+                <td th:text="${user.firstName}">First Name
+                </td>
+                <td th:text="${user.lastName}">Last Name
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
